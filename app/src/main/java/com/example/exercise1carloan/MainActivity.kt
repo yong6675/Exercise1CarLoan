@@ -34,18 +34,22 @@ class MainActivity : AppCompatActivity() {
         val interest1: TextView = findViewById(R.id.textViewInterest)
         val monthly: TextView = findViewById(R.id.textViewMonthlyRepayment)
         //get
-        val edit1 = loan.text.toString().toInt()
-        val edit2 = down.text.toString().toInt()
-        val edit3 = interest.text.toString().toInt()
-        val edit4 = price.text.toString().toInt()
+        val edit1 = loan.text.toString().toDouble()
+        val edit2 = down.text.toString().toDouble()
+        val edit3 = interest.text.toString().toDouble()
+        val edit4 = price.text.toString().toDouble()
 
-        val loan2: Int = edit4 - edit2
-        val interest2: Int = loan2*edit3*edit1
-        val monthly1: Int = (loan2+interest2)/edit1/12
+        val loan2: Double = edit4 - edit2
+        val interest2: Double = loan2*edit3*edit1
+        val monthly1: Double = (loan2+interest2)/edit1/12
 
-        loan1.setText("Loan : RM"+Integer.toString(loan2))
-        interest1.setText("Interest : RM"+Integer.toString(interest2))
-        monthly.setText("Monthly Repayment : RM"+Integer.toString(monthly1))
+        val loan3 = String.format("%.2f",loan2)
+        val interest3 = String.format("%.2f",interest2)
+        val monthly2 = String.format("%.2f",monthly1)
+
+        loan1.setText("Loan : RM"+String.format(loan3))
+        interest1.setText("Interest : RM"+String.format(interest3))
+        monthly.setText("Monthly Repayment : RM"+String.format(monthly2))
 
     }
 
